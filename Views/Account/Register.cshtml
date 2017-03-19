@@ -1,0 +1,103 @@
+﻿@model ThrobAndWater.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+<style>
+#ajax_loader {
+width: 100%;
+height: 100%;
+top: 0px;
+left: 0px;
+position: fixed;
+display: none;
+background-color: rgba(0, 0, 0, 0.5);
+z-index: 99;
+text-align: center;
+}
+#ajax_loader img {
+position: absolute;
+top: 250px;
+left: 550px;
+z-index: 600;
+}
+    </style>
+
+<style type="text/css">
+    section {
+        display: block;
+    }
+
+    .watermark {
+        color: #888;
+    }
+</style>
+
+<h2>@ViewBag.Title.</h2>
+
+
+
+
+<form>
+
+    <div class="form-group">
+        <label for="email">First Name:</label>
+        <input type="text" class="form-control" id="fname" placeholder="Type your First Name">
+
+    </div>
+
+    <div class="form-group">
+        <label for="email">Last Name:</label>
+        <input type="text" class="form-control" id="lname" placeholder="Type your Last Name">
+
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" id="email">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd">
+    </div>
+  
+    <button type="button"  id="register" class="btn btn-default">Submit</button>
+</form>
+
+
+<div id='ajax_loader'>
+    <img src="https://www.drupal.org/files/issues/ajax-loader.gif">
+</div>
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script src="~/Scripts/watermark/ui.watermark.js"></script>
+<script>
+$(document).ready(function(){
+    //alert("213");
+
+    $("#register").click(function () {
+        $(document.body).attr("style", "background-color:rgba(0, 0, 0, 0.5);");
+        //Step 1: ajax call
+        $("#ajax_loader").show();
+
+        // Step 2:  hide in response
+        //$("#ajax_loader").hide();
+    });
+
+
+    //Water Mark Example
+
+    $("#fname").watermark();
+    $("#lname").watermark();
+    //https://github.com/marioestrada/jQuery-Watermark
+
+});
+
+</script>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
